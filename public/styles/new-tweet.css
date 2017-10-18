@@ -1,14 +1,13 @@
 .new-tweet {
-	margin-left: 2em;
-	margin-right: 2em;
+	margin: 0 2em 0 2em;
 	border-radius: 10px;
 	background-color: #eee;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	padding-bottom: 0.5em;
+	padding: 0 0.5em 0.5em 0.5em;
+	border: 1px solid #ccc;
 }
 
 .new-tweet h2 {
+	margin: 0.5em 0 0.5em 0;
 	border-bottom: 1px solid #000;
 }
 

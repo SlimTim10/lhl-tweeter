@@ -6,6 +6,7 @@
 article.tweet {
 	border: 1px solid #ccc;
 	border-radius: 10px;
+	margin-bottom: 1em;
 }
 
 article.tweet header {

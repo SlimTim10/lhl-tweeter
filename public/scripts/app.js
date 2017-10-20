@@ -88,4 +88,17 @@ $(document).ready(function() {
   }
 
   renderTweets(data);
+
+  $(".new-tweet form").on("submit", function(event) {
+    event.preventDefault();
+    const $form = $(this);
+    const data = $form.serialize();
+    const action = $form.attr("action");
+    const method = $form.attr("method");
+    $.ajax({
+      method: method,
+      url: action,
+      data: data
+    });
+  });
 });

@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function() {
   $(".new-tweet textarea").bind("input propertychange", function() {
     const tweet = $(this).val();
     const x = 140 - tweet.length;

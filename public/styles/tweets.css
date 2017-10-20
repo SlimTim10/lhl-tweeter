@@ -9,15 +9,27 @@ article.tweet {
 	margin-bottom: 1em;
 }
 
+article.tweet:hover {
+	border: 1px solid #888;
+}
+
 article.tweet header {
 	border-radius: 10px 10px 0 0;
 	padding: 0.5em;
 	background-color: #eee;
 }
 
+article.tweet:hover header {
+	background-color: #ddd;
+}
+
 article.tweet header .author {
 	font-size: 1.5em;
 	font-weight: 700;
+	color: #8aa;
+}
+
+article.tweet:hover header .author {
 	color: #066;
 }
 
@@ -25,6 +37,10 @@ article.tweet header .username {
 	float: right;
 	font-weight: 300;
 	color: #888;
+}
+
+article.tweet:hover header .username {
+	color: #666;
 }
 
 .tweet-content {

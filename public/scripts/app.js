@@ -21,14 +21,23 @@ $(document).ready(function() {
   }
 
   const createTweetElement = (data) => {
-    const articleElem = $("<article>").addClass("tweet");
+    const articleElem = $("<article>")
+          .addClass("tweet");
     const headerElem = $("<header>");
-    const authorElem = $("<span>").addClass("author").text(data.user.name);
-    const usernameElem = $("<span>").addClass("username").text(data.user.handle);
-    const contentElem = $("<p>").addClass("tweet-content").text(data.content.text);
+    const authorElem = $("<span>")
+          .addClass("author")
+          .text(data.user.name);
+    const usernameElem = $("<span>")
+          .addClass("username")
+          .text(data.user.handle);
+    const contentElem = $("<p>")
+          .addClass("tweet-content")
+          .text(data.content.text);
     const footerElem = $("<footer>");
-    const dateElem = $("<p>").addClass("date").text(data.created_at);
-    
+    const dateElem = $("<p>")
+          .addClass("date")
+          .text(data.created_at);
+
     return articleElem
       .append(
         headerElem

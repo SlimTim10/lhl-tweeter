@@ -56,7 +56,10 @@ $(document).ready(function() {
         method: method,
         url: action,
         data: data
-      });
+      })
+        .done(function() {
+          loadTweets();
+        });
     } else {
       alert("Invalid tweet");
     }

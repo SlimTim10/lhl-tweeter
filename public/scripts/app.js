@@ -16,6 +16,8 @@ $(document).ready(function() {
     const articleElem = $("<article>")
           .addClass("tweet");
     const headerElem = $("<header>");
+    const avatarElem = $("<img>")
+          .attr("src", data.user.avatars.small);
     const authorElem = $("<span>")
           .addClass("author")
           .text(data.user.name);
@@ -33,6 +35,7 @@ $(document).ready(function() {
     return articleElem
       .append(
         headerElem
+          .append(avatarElem)
           .append(authorElem)
           .append(usernameElem))
       .append(contentElem)

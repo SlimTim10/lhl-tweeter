@@ -47,15 +47,28 @@ $(document).ready(function() {
   $(".new-tweet form").on("submit", function(event) {
     event.preventDefault();
     const $form = $(this);
+    const content = $form.serializeArray()[0].value;
     const data = $form.serialize();
     const action = $form.attr("action");
     const method = $form.attr("method");
-    $.ajax({
-      method: method,
-      url: action,
-      data: data
-    });
+    if (validTweet(content)) {
+      $.ajax({
+        method: method,
+        url: action,
+        data: data
+      });
+    } else {
+      alert("Invalid tweet");
+    }
   });
+
+  function validTweet(content) {
+    return content !== ""
+      && content !== null
+      && content !== undefined
+      && content.length > 0
+      && content.length <= 140;
+  }
 
   function loadTweets() {
     const url = $(".new-tweet form").attr("action");

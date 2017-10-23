@@ -21,3 +21,20 @@
 	font-size: 2em;
 	line-height: 80px;
 }
+
+#nav-bar .compose {
+	float: right;
+	margin-top: 10px;
+	height: 60px;
+	width: 90px;
+	border-radius: 10px;
+	border: 1px solid black;
+	color: #00a087;
+	background-color: #fff;
+	opacity: 0.85;
+}
+
+#nav-bar:hover .compose {
+	color: #000;
+	opacity: 1;
+}

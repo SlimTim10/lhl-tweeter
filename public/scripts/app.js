@@ -5,6 +5,14 @@
  */
 $(document).ready(function() {
 
+  loadTweets();
+
+  $("#nav-bar .compose").on("click", function() {
+    $(".new-tweet").slideToggle(400, function() {
+      $(this).find("textarea").focus();
+    });
+  });
+
   function renderTweets(tweets) {
     tweets.forEach((tweetData) => {
       $tweet = createTweetElement(tweetData);
@@ -79,7 +87,5 @@ $(document).ready(function() {
       renderTweets(data);
     });
   }
-  
-  loadTweets();
   
 });

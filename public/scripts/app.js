@@ -14,9 +14,10 @@ $(document).ready(function() {
   });
 
   function renderTweets(tweets) {
+    const $tweetsContainer = $("#tweets").html("");
     tweets.forEach((tweetData) => {
-      $tweet = createTweetElement(tweetData);
-      $("#tweets").append($tweet);
+      const $tweet = createTweetElement(tweetData);
+      $tweetsContainer.append($tweet);
     });
   }
 

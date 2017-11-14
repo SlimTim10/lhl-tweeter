@@ -18,14 +18,15 @@ module.exports = function makeDataHelpers(db) {
       });
     },
 
-    // Get all tweets in `db`, sorted by newest first
+    // Get all tweets in `db`, sorted by latest first
     getTweets: function(callback) {
       simulateDelay(() => {
         db.collection("tweets").find().toArray((err, tweets) => {
           if (err) return callback(err);
 
           const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-          callback(null, tweets.sort(sortNewestFirst));
+          const sortLatestFirst = (a, b) => b.created_at - a.created_at;
+          callback(null, tweets.sort(sortLatestFirst));
         });
       });
     }

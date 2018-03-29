@@ -14,10 +14,14 @@ const {MongoClient} = require("mongodb");
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
 (async function() {
-  const db = await MongoClient.connect(MONGODB_URI);
-  const DataHelpers = require("./lib/data-helpers.js")(db);
-  const tweetsRoutes = require("./routes/tweets")(DataHelpers);
-  app.use("/tweets", tweetsRoutes);
+  try {
+    const db = await MongoClient.connect(MONGODB_URI);
+    const DataHelpers = require("./lib/data-helpers.js")(db);
+    const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+    app.use("/tweets", tweetsRoutes);
+  } catch (err) {
+    console.log(err.stack);
+  }
 })();
 
 // MongoClient.connect(MONGODB_URI, (err, db) => {

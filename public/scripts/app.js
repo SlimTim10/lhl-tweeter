@@ -98,7 +98,8 @@ const timeAgo = timestamp => {
   const msMinute = msSecond * 60;
   const msHour = msMinute * 60;
   const msDay = msHour * 24;
-  const msMonth = msDay * 30;
+  const msWeek = msDay * 7;
+  const msMonth = msWeek * 4;
   const msYear = msMonth * 12;
 
   if (timediff < msSecond) {
@@ -109,8 +110,10 @@ const timeAgo = timestamp => {
     return (Math.floor(timediff / msMinute)) + " minutes ago";
   } else if (timediff < msDay) {
     return (Math.floor(timediff / msHour)) + " hours ago";
-  } else if (timediff < msMonth) {
+  } else if (timediff < msWeek) {
     return (Math.floor(timediff / msDay)) + " days ago";
+  } else if (timediff < msMonth) {
+    return (Math.floor(timediff / msWeek)) + " weeks ago";
   } else if (timediff < msYear) {
     return (Math.floor(timediff / msMonth)) + " months ago";
   } else {

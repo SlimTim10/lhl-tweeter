@@ -60,3 +60,13 @@ article.tweet footer {
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 }
+
+.date {
+	display: inline-block;
+}
+
+.icons {
+	float: right;
+	line-height: 3em;
+	color: #00a087;
+}

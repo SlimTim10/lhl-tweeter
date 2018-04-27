@@ -78,6 +78,14 @@ const createTweetElement = data => {
   const dateElem = $("<p>")
         .addClass("date")
         .text(timeAgo(data.created_at));
+  const iconElem = $("<div>")
+        .addClass("icons");
+  const flagIconElem = $("<i>")
+        .addClass("fas fa-flag");
+  const retweetIconElem = $("<i>")
+        .addClass("fas fa-retweet");
+  const likeIconElem = $("<i>")
+        .addClass("fas fa-heart");
 
   return articleElem
     .append(
@@ -88,7 +96,11 @@ const createTweetElement = data => {
     .append(contentElem)
     .append(
       footerElem
-        .append(dateElem));
+        .append(dateElem)
+        .append(iconElem
+                .append(flagIconElem)
+                .append(retweetIconElem)
+                .append(likeIconElem)));
 }
 
 const timeAgo = timestamp => {

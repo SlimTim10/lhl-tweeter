@@ -8,7 +8,7 @@ $(document).ready(function() {
   loadTweets();
   
   $("#nav-bar .compose").on("click", () => {
-    $(".new-tweet").slideToggle(400, () => {
+    $(".new-tweet").slideToggle(400, function() {
       $(this).find("textarea").focus();
     });
   });
@@ -42,14 +42,15 @@ const validTweet = content => {
     && content !== undefined
     && content.length > 0
     && content.length <= 140;
-}
+};
 
 const loadTweets = () => {
   const url = $(".new-tweet form").attr("action");
   $.getJSON(url, data => {
     renderTweets(data);
+    attachIconClickHandlers();
   });
-}
+};
 
 const renderTweets = tweets => {
   const $tweetsContainer = $("#tweets").html("");
@@ -57,11 +58,12 @@ const renderTweets = tweets => {
     const $tweet = createTweetElement(tweetData);
     $tweetsContainer.append($tweet);
   });
-}
+};
 
 const createTweetElement = data => {
   const articleElem = $("<article>")
-        .addClass("tweet");
+        .addClass("tweet")
+        .data("id", data._id);
   const headerElem = $("<header>");
   const avatarElem = $("<img>")
         .attr("src", data.user.avatars.small);
@@ -101,7 +103,7 @@ const createTweetElement = data => {
                 .append(flagIconElem)
                 .append(retweetIconElem)
                 .append(likeIconElem)));
-}
+};
 
 const timeAgo = timestamp => {
   const timediff = Date.now() - timestamp;
@@ -131,4 +133,10 @@ const timeAgo = timestamp => {
   } else {
     return (Math.floor(timediff / msYear)) + " years ago";
   }
-}
+};
+
+const attachIconClickHandlers = () => {
+  $(".fa-flag").on("click", function() {
+    console.log($(this).closest("article").data("id"));
+  });
+};

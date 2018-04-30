@@ -61,12 +61,21 @@ article.tweet footer {
 	padding-right: 0.5em;
 }
 
-.date {
+article.tweet .date {
 	display: inline-block;
 }
 
-.icons {
+article.tweet .icons {
 	float: right;
 	line-height: 3em;
 	color: #00a087;
+	opacity: 0;
+}
+
+article.tweet:hover .icons {
+	opacity: 0.5;
+}
+
+article.tweet .fas:hover {
+	color: #ff0000;
 }

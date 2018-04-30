@@ -80,6 +80,9 @@ const createTweetElement = data => {
   const dateElem = $("<p>")
         .addClass("date")
         .text(timeAgo(data.created_at));
+  const likesElem = $("<p>")
+        .addClass("likes")
+        .text("Likes: " + data.likes);
   const iconElem = $("<div>")
         .addClass("icons");
   const flagIconElem = $("<i>")
@@ -88,6 +91,8 @@ const createTweetElement = data => {
         .addClass("fas fa-retweet");
   const likeIconElem = $("<i>")
         .addClass("fas fa-heart");
+
+  if (data.likes > 0) likeIconElem.addClass("liked");
 
   return articleElem
     .append(
@@ -102,7 +107,8 @@ const createTweetElement = data => {
         .append(iconElem
                 .append(flagIconElem)
                 .append(retweetIconElem)
-                .append(likeIconElem)));
+                .append(likeIconElem))
+        .append(likesElem))
 };
 
 const timeAgo = timestamp => {
@@ -145,6 +151,20 @@ const attachIconClickHandlers = () => {
   });
   
   $(".fa-heart").on("click", function() {
-    console.log($(this).closest("article").data("id"));
+    const $article = $(this).closest("article");
+    const tweetID = $article.data("id");
+    $.post("/tweets/like", { tweetid: tweetID })
+      .done(() => {
+        reloadTweet(tweetID, $article);
+      });
+  });
+};
+
+const reloadTweet = (tweetID, $article) => {
+  $.getJSON(`/tweets/${tweetID}`, data => {
+    const tweetData = data[0];
+    if (!tweetData) return;
+    const $tweet = createTweetElement(tweetData);
+    $article.html($tweet.html());
   });
 };

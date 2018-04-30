@@ -69,13 +69,26 @@ article.tweet .icons {
 	float: right;
 	line-height: 3em;
 	color: #00a087;
+}
+
+article.tweet .icons .fas {
 	opacity: 0;
 }
 
-article.tweet:hover .icons {
+article.tweet:hover .icons .fas {
 	opacity: 0.5;
 }
 
 article.tweet .fas:hover {
+	color: #ff0000;
+}
+
+article.tweet .likes {
+	float: right;
+	margin-right: 10px;
+}
+
+.liked {
+	opacity: 0.5 !important;
 	color: #ff0000;
 }

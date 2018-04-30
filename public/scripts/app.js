@@ -139,4 +139,12 @@ const attachIconClickHandlers = () => {
   $(".fa-flag").on("click", function() {
     console.log($(this).closest("article").data("id"));
   });
+  
+  $(".fa-retweet").on("click", function() {
+    console.log($(this).closest("article").data("id"));
+  });
+  
+  $(".fa-heart").on("click", function() {
+    console.log($(this).closest("article").data("id"));
+  });
 };

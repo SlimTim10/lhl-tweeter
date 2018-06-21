@@ -13,9 +13,7 @@ module.exports = function makeDataHelpers(db) {
     saveTweet: function(newTweet, callback) {
       simulateDelay(() => {
         db.collection("tweets").insertOne(newTweet, (err, result) => {
-          if (err) return callback(err);
-          
-          callback(null, true);
+          callback(err, true);
         });
       });
     },
